@@ -2,7 +2,7 @@
 <table>
   <tr>
     <td>
-      <img align="center" src="https://github-readme-stats-syqo.vercel.app/api/top-langs/?username=NekodRider&count_private=true&layout=compact&theme=algolia&bg_color=right,141e30,243b55&card_width=445" />
+      <img align="center" src="https://github-readme-stats-syqo.vercel.app/api/top-langs/?username=NekodRider&langs_count=8&count_private=true&layout=compact&theme=algolia&bg_color=right,141e30,243b55&card_width=445" />
     </td>
   </tr>
 </table>
