@@ -1,5 +1,4 @@
 """Refresh the profile SVGs: python3 scripts/update_profile.py."""
-import json
 from html import escape
 from pathlib import Path
 from profile_data import refresh
@@ -66,5 +65,4 @@ if __name__ == '__main__':
     (ROOT / 'assets').mkdir(exist_ok=True)
     for theme in ['dark', 'light']:
         render(data, theme)
-    (ROOT / 'demo' / 'stats-snapshot.json').write_text(json.dumps(data, indent=2) + '\n')
     print('Updated profile assets from the existing stats service.')
