@@ -1,0 +1,45 @@
+{
+  "stats": {
+    "stars": "43",
+    "commits": "2.4k",
+    "prs": "244",
+    "prs_merged": "241",
+    "issues": "23",
+    "contribs": "2"
+  },
+  "languages": [
+    {
+      "name": "TypeScript",
+      "percent": 36.39
+    },
+    {
+      "name": "Python",
+      "percent": 28.88
+    },
+    {
+      "name": "JavaScript",
+      "percent": 20.96
+    },
+    {
+      "name": "Java",
+      "percent": 3.79
+    },
+    {
+      "name": "CSS",
+      "percent": 3.58
+    },
+    {
+      "name": "C",
+      "percent": 3.17
+    },
+    {
+      "name": "HTML",
+      "percent": 1.98
+    },
+    {
+      "name": "Go",
+      "percent": 1.23
+    }
+  ],
+  "updated_at": "2026-10-01T13:15:48Z"
+}
