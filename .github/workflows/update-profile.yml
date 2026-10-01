@@ -1,0 +1,52 @@
+name: Update profile stats
+
+on:
+  schedule:
+    - cron: '37 10 * * *'
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/update-profile.yml'
+      - 'scripts/profile_data.py'
+      - 'scripts/update_profile.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-profile
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.repository == 'NekodRider/NekodRider' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Check out profile
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: master
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+
+      - name: Refresh SVGs
+        run: python scripts/update_profile.py
+
+      - name: Commit changed SVGs
+        run: |
+          git add assets/banner-dark.svg assets/banner-light.svg assets/activity-dark.svg assets/activity-light.svg
+          if git diff --cached --quiet; then
+            echo "Profile stats have not changed."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: refresh profile stats' -m '- Update generated SVGs from the existing stats service'
+          git push origin HEAD:master
